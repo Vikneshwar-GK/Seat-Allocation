@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.2.13/jspdf.plugin.autotable.min.js"></script>
+    <!-- <script src="node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.js"></script>
+    <script src="node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.min.js"></script>
+    <script src="node_modules/jsPDF/dist/jspdf.min.js"></script> -->
+</head>
+
+<body>
+
+    <button type="button" onclick="demo()">Click Me!</button>
+
+    <script>
+        var dept_wise = <%-JSON.stringify(obj1)%>;
+        var room_wise = <%-JSON.stringify(obj2)%>;
+
+
+        function demo() {
+
+            //alert("hfds");
+            //alert(obj);
+            var doc1 = new jsPDF()
+            var doc2 = new jsPDF()
+                //     // It can parse html:
+                //     // doc.autoTable({
+                //     //     html: '#my-table'
+                //     // })
+
+            // // Or use javascript directly:
+            // // var li = [
+            // //     ['David', 'davidexample.com', 'Sweden'],
+            // //     ['Castille', 'astille@example.com', 'Norway'],
+            // //     ['fuck', 'you', 'bitch'],
+            // // ];
+
+            doc1.autoTable({
+                head: [
+                    ['Dept', 'Room', 'Roll', 'Total']
+                ],
+                body: dept_wise,
+            });
+
+            doc2.autoTable({
+                head: [
+                    ['Room', 'Dept', 'Roll', 'Total']
+                ],
+                body: room_wise,
+            });
+
+            doc1.save('seatPlan_dept.pdf');
+            doc2.save('seatPlan_Room.pdf');
+        }
+    </script>
+
+</body>
+
+</html>

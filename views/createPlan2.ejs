@@ -1,0 +1,132 @@
+<form action="/examcell/create/plan2" class="form-group" method="POST">
+    <li class="list-group-item mb-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+                <h5>SELECTED SEMESTER:</h5>
+
+                <div class="custom-control custom-checkbox mb-3 custom-control-inline">
+                    <input type="checkbox" name="<%= 'semester-' + semester %>" class="custom-control-input" id="<%= 'semester-' + semester %>" checked />
+                    <label class="custom-control-label" for="<%= 'semester-' + semester %>"><%= semester%></label
+            >
+          </div>
+  
+          <hr />
+  
+          <h5>
+            SELECTED SEATING OPTION:
+          </h5>
+  
+          <div class="custom-control custom-checkbox mb-3 custom-control-inline">
+            <input
+              type="checkbox"
+              name="<%= 'seatingOption-' + seatingOption %>"
+              class="custom-control-input"
+              id="<%= 'seatingOption-' + seatingOption %>"
+              checked
+            />
+            <label
+              class="custom-control-label"
+              for="<%= 'seatingOption-' + seatingOption %>"
+              ><%= seatingOption%></label
+            >
+          </div>
+  
+          <hr />
+  
+          <h5>
+            SELECTED DEPARTMENTS: <% depList.forEach(function(entry){ %>
+          </h5>
+  
+          <div class="custom-control custom-checkbox mb-3 custom-control-inline">
+            <input
+              type="checkbox"
+              name="<%= 'dep-' + entry %>"
+              class="custom-control-input"
+              id="<%= 'dep-' + entry %>"
+              checked
+            />
+            <label class="custom-control-label" for="<%= 'dep-' + entry %>"
+              ><%= entry%></label
+            >
+          </div>
+          <% }) %>
+  
+          <hr />
+  
+          <h5>
+            SELECTED BLOCK: <% blockList.forEach(function(entry){ %>
+          </h5>
+  
+          <div class="custom-control custom-checkbox mb-3 custom-control-inline">
+            <input
+              type="checkbox"
+              name="<%= 'block-' + entry %>"
+              class="custom-control-input"
+              id="<%= 'block-' + entry %>"
+              checked
+            />
+            <label class="custom-control-label" for="<%= 'block-' + entry %>"
+              ><%= entry%></label
+            >
+          </div>
+          <% }) %>
+        </div>
+      </div>
+      <hr />
+      <h2 class="text-center">Department and subjects</h2>
+      <hr />
+      <% for(var i in depSubObj){ %>
+      <div class="row">
+        <div class="col-3">
+          <h4><%= i %></h4>
+        </div>
+        <div class="col-9">
+          <select
+            id="<%= 'sub-' + i %>"
+            name="<%= 'SUB-' + i %>"
+            class="form-control"
+          >
+            <% depSubObj[i].map(function(e){ %>
+            <option value="<%= e %>"><%= e %></option>
+            <% }); %>
+          </select>
+        </div>
+      </div>
+      <hr />
+      <% } %>
+    </li>
+  
+    <li class="list-group-item">
+      <h2 class="text-center">Room Selection</h2>
+      <hr />
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+          <% blockList.forEach((ele) => { %>
+  
+          <h2>
+            <%= "Available rooms in Block "+ ele %>
+          </h2>
+          <% roomInfo[ele].forEach((room) => { %>
+          <div class="custom-control custom-checkbox mb-3 custom-control-inline">
+            <input
+              type="checkbox"
+              name="<%= ele + room %>"
+              class="custom-control-input"
+              id="<%= ele + room %>"
+            />
+            <label class="custom-control-label" for="<%= ele + room %>"
+              ><%= ele + room[0] %></label
+            >
+          </div>
+          <% }) %>
+          <hr />
+  
+          <% }) %>
+  
+          <button type="submit" class="btn btn-success btn-lg justify-center">
+            Next
+          </button>
+        </div>
+      </div>
+    </li>
+  </form>

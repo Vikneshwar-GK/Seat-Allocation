@@ -1,0 +1,63 @@
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+<form action="/dashboard/addDetails" method="POST">
+
+    <% include ./partials/addError %>
+    <div class="card mb-5">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <div class="form-group">
+                    <label for="semester">
+                        <h5 class="text">Select the semester:</h5>
+                    </label>
+
+                    <select name="semester" class="form-control" id="semester">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="form-group">
+                    <label for="department">
+                        <h5 class="text">Select the department:</h5>
+                    </label>
+
+                    <select name="department" class="form-control" id="department">
+                        <option value="cse">CSE</option>
+                        <option value="it">IT</option>
+                        <option value="biotech">BIO-TECH</option>
+                        <option value="biomed">BIO-MED</option>
+                        <option value="biotech">MECHANICAL</option>
+                        <option value="mech">MECHATRONICS</option>
+                        <option value="mechatronics">CIVIL</option>
+                        <option value="aero">AERO</option>
+                        <option value="foodtech">FOOD-TECH</option>
+                        <option value="chemical">CHEMICAL</option>
+                        <option value="eee">EEE</option>
+                        <option value="ece">ECE</option>
+                    </select>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="form-group">
+                    <label for="subcode"> <h5>Enter the subject code:</h5> </label>
+                    <input type="text" id="subcode" name="subcode" class="form-control" placeholder="Enter Subject Code" />
+                </div>
+            </li>
+
+
+        </ul>
+        <button type="submit" class="m-5 btn btn-success btn-lg">
+            Add to DB
+        </button>
+    </div>
+</form>
+</div>
+</div>

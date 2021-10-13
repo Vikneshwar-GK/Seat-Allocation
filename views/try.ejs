@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        text-align: center;
+    }
+    
+    body {
+        font-family: "Lato", sans-serif;
+    }
+    
+    .sidenav {
+        width: 115px;
+        height: 600px;
+        position: fixed;
+        z-index: 1;
+        top: 80px;
+        left: 0px;
+        background: #eee;
+        overflow-x: hidden;
+        padding: 8px 0;
+    }
+    
+    .sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #2196F3;
+        display: block;
+    }
+    
+    .sidenav a:hover {
+        color: #064579;
+    }
+    
+    .main {
+        margin-left: 140px;
+        /* Same width as the sidebar + left position in px */
+        font-size: 28px;
+        /* Increased text to enable scrolling */
+        padding: 0px 10px;
+    }
+    
+    @media screen and (max-height: 450px) {
+        .sidenav {
+            padding-top: 15px;
+        }
+        .sidenav a {
+            font-size: 18px;
+        }
+    }
+</style>
+
+
+<body>
+    <div class="sidenav">
+        <a href="/examcell/modify/student/add">ADD</a>
+        <a href="/examcell/modify/student/addMore">ADD MORE</a>
+        <a href="/examcell/modify/student/view">VIEW</a>
+        <a href="/examcell/modify/student/delete">DELETE</a>
+        <a href="/examcell/modify/student/deleteMore">DELETE MORE</a>
+        <a href="/examcell/modify/student/swap">SWAP</a>
+
+    </div>
+    <h3> STUDENT COLLECTION - DELETE MORE</h3>
+    <hr>
+    <br>
+    <form action="/examcell/modify/student/deleteMore" method="POST">
+
+
+        <li class="list-group-item">
+
+            <label for="sem">
+                <h5 class="text">Select Year:</h5>
+            </label>
+            <select name="year" class="form-control" id="year">
+                
+                <% for(let year=1; year<=4; year++) { %>
+                    <option value= <%= year %> > <%= year %> </option>
+                <% } %>
+            </select>
+            <br>
+
+            <h5 class="left-text">Select Departments:</h5>
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6">
+
+                    <% deptname.forEach((element) => { %>
+
+
+                        <div class="custom-control custom-checkbox mb-3 custom-control-inline">
+                            <input name="<%= element.dept%>" type="checkbox" class="custom-control-input" id="<%= element.dept %>">
+
+                            <label class="custom-control-label" for="<%= element.dept %>"><%= element.dept %></label>
+                        </div>
+                        <% }); %>
+
+
+                </div>
+            </div>
+
+        </li>
+
+        <button type="submit" class="m-5 btn btn-success btn-lg">
+        DELETE
+     </button>
+
+    </form>
+
+
+
+</body>
+
+</html>

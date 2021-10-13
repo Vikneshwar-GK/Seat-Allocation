@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.2.13/jspdf.plugin.autotable.min.js"></script>
+
+</head>
+
+<body>
+
+    <button type="button" onclick="demo()">Download!</button>
+
+    <script>
+        var dept_wise = <%-JSON.stringify(obj1)%>;
+        var room_wise = <%-JSON.stringify(obj2)%>;
+        var room_mat = <%-JSON.stringify(obj3)%>;
+
+
+        function demo() {
+
+            //alert("hfds");
+            //alert(obj);
+            var doc1 = new jsPDF('landscape')
+                //var doc2 = new jsPDF('landscape')
+                //var doc3 = new jsPDF('landscape')
+
+            doc1.text('DEPARTMENT WISE', 20, 20);
+            doc1.autoTable({
+                startY: 30,
+                head: [
+                    ['Dept', 'Room', 'Roll', 'Total']
+                ],
+                body: dept_wise,
+            });
+
+            doc1.addPage();
+
+            doc1.text('ROOM WISE', 20, 20);
+            doc1.autoTable({
+                startY: 30,
+                head: [
+                    ['Room', 'Dept', 'Roll', 'Total']
+                ],
+                body: room_wise,
+            });
+
+            let head;
+            let temp;
+            doc1.addPage();
+            for (let i in room_mat) {
+                head = [];
+                temp = [];
+                for (let j = 0; j < room_mat[i][0].length; j++) {
+                    temp.push(j + 1);
+                }
+                head.push(temp);
+
+                doc1.text(i, 20, 20);
+
+                doc1.autoTable({
+                    startY: 30,
+                    head: head,
+                    body: room_mat[i],
+                });
+                doc1.addPage();
+            }
+
+
+            doc1.save('seatPlan_dep.pdf');
+            //doc2.save('seatPlan_Room.pdf');
+        }
+    </script>
+
+</body>
+
+</html>

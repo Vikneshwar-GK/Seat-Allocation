@@ -1,0 +1,88 @@
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+        <h1 class="text-center"><span class="badge badge-light m-5">CREATE THE PLAN</span></h1>
+        <form action="/examcell/create/plan1" method="POST">
+
+            <div class="card mb-5">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="form-group">
+                            <label for="semester">
+                                <h5 class="text">Select the semester:</h5>
+                            </label>
+                            <select name="semester" class="form-control" id="semester">
+                                <option value="1" >1</option>
+                                <option value="2" >2</option>
+                                <option value="3" >3</option>
+                                <option value="4" >4</option>
+                                <option value="5" >5</option>
+                                <option value="6" >6</option>
+                                <option value="7" >7</option>
+                                <option value="8" >8</option>
+                            </select>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <h5 class="left-text">Select the departments:</h5>
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-md-6">
+
+                                <% deptname.forEach((doc) => { %>
+
+                                    <div class="custom-control custom-checkbox mb-3 custom-control-inline">
+                                        <input type="checkbox" name="<%='dep-'+doc.dept %>" class="custom-control-input" id="<%= doc.dept %>">
+
+                                        <label class="custom-control-label" for="<%= doc.dept %>"><%= doc.dept %></label>
+                                    </div>
+
+                                    <% }); %>
+
+
+                            </div>
+                        </div>
+
+                    </li>
+                    <li class="list-group-item">
+                        <h5 class="left-text">Select the blocks:</h5>
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-md-6">
+
+                                <% for(var i=0; i<blockname.length; i++) { %>
+
+
+                                    <div class="custom-control custom-checkbox mb-3 custom-control-inline">
+                                        <input name="<%='block-'+blockname[i] %>" type="checkbox" class="custom-control-input" id="<%='block-'+blockname[i] %>">
+
+                                        <label class="custom-control-label" for="<%='block-'+blockname[i] %>"><%= 'Block ' + blockname[i]%></label>
+                                    </div>
+                                    <% } %>
+
+
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="form-group">
+                            <label for="seating-options">
+                                <h5 class="text">Select the seating option:</h5>
+                            </label>
+                            <select name="seating-option" class="form-control" id="seating-options">
+                                <option value="1">1</option>
+                                <option value="2">2</option> 
+                            </select>
+                        </div>
+                    </li>
+
+
+                </ul>
+                <button type="submit" class="m-5 btn btn-success btn-lg">
+                   Next
+                </button>
+            </div>
+        </form>
+
+    </div>
+
+
+</div>

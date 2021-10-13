@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        text-align: center;
+    }
+    
+    body {
+        font-family: "Lato", sans-serif;
+    }
+    
+    .sidenav {
+        width: 115px;
+        height: 600px;
+        position: fixed;
+        z-index: 1;
+        top: 80px;
+        left: 0px;
+        background: #eee;
+        overflow-x: hidden;
+        padding: 8px 0;
+    }
+    
+    .sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #2196F3;
+        display: block;
+    }
+    
+    .sidenav a:hover {
+        color: #064579;
+    }
+    
+    .main {
+        margin-left: 140px;
+        /* Same width as the sidebar + left position in px */
+        font-size: 28px;
+        /* Increased text to enable scrolling */
+        padding: 0px 10px;
+    }
+    
+    @media screen and (max-height: 450px) {
+        .sidenav {
+            padding-top: 15px;
+        }
+        .sidenav a {
+            font-size: 18px;
+        }
+    }
+</style>
+
+
+<body>
+    <div class="sidenav">
+        <a href="/examcell/modify/student/add">ADD</a>
+        <a href="/examcell/modify/student/addmore">ADD MORE</a>
+        <a href="/examcell/modify/student/view">VIEW</a>
+        <a href="/examcell/modify/student/delete">DELETE</a>
+        <a href="/examcell/modify/student/deleteMore">DELETE MORE</a>
+        <a href="/examcell/modify/student/swap">SWAP</a>
+
+    </div>
+    <h3> STUDENT COLLECTION - ADD MORE</h3>
+    <hr>
+    <br>
+    <form action="/examcell/modify/student/addmore" method="POST">
+        <div class="form-group">
+            <label for="sem">
+                <h5 class="text">Select year:</h5>
+            </label>
+            <select name="year" class="form-control" id="bid">
+                
+                <% for(let element=1; element<=4; element++) { %>
+                    <option value= <%= element %> > <%= element %> </option>
+                <% } %>
+            </select>
+            <br>
+            <label for="dept">
+            <h5 class="text">Select Department:</h5>
+        </label>
+            <select name="dept" class="form-control" id="dept">
+            <% deptname.forEach((element) => { %>
+                <option value= <%= element.dept %> > <%= element.dept %> </option>
+            <% }); %>
+            </select>
+            <br>
+            <label for="id">START ROLL NO :</label>
+            <input type="number" name="st_roll" id="st_roll" required>
+            <br>
+            <label for="id">END ROLL NO :</label>
+            <input type="number" name="en_roll" id="en_roll" required>
+
+
+        </div>
+        <hr>
+
+        <h5>* Enter 1 or more roll no. separated by comma(,)</h5>
+        <button type="submit" class="m-5 btn btn-success btn-lg">
+        ADD
+     </button>
+
+    </form>
+
+</body>
+
+</html>
